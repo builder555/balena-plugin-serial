@@ -1,0 +1,16 @@
+{
+  "name": "serial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^27.5.0",
+    "jest": "^28.0.3",
+    "ts-jest": "^28.0.1",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "@types/serialport": "^8.0.2",
+    "serialport": "^10.4.0"
+  }
+}
