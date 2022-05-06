@@ -16,22 +16,26 @@ jest.mock('serialport', () => {
     return {SerialPort: MockSerialPort};
 });
 
-const simulateDataOnPort = (data: Buffer) => {
+const simulateSerialData = (data: Buffer) => {
     eventEmitter.emit('data', data);
 }
 
 describe('Serial Communication Plugin', () => {
     it('sends data to the serial port', async () =>{
         const fakeData = Buffer.from('1');
+
         const plugin = new SerialPlugin( { port: '/dev/serial0', baud: 9600 } );
         await plugin.write(fakeData);
+
         expect(fakeSerialWrite).toBeCalledWith(fakeData);
     });
     it('reads data from the serial port', () => {
         const fakeData = Buffer.from('1');
+
         const plugin = new SerialPlugin( { port: '/dev/serial0', baud: 9600 } );
-        simulateDataOnPort(fakeData);
+        simulateSerialData(fakeData);
         const data = plugin.read();
+
         expect(data).toEqual(fakeData);
     })
 });

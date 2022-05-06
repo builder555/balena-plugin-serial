@@ -1,6 +1,7 @@
 import { SerialPort } from 'serialport';
+import { PluginProtocol } from './plugin';
 
-class SerialPlugin {
+class SerialPlugin implements PluginProtocol {
     serialport: SerialPort | null = null;
     port: string;
     baud: number;
